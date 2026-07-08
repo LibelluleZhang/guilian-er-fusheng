@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>归连而复生 · 自然、土地与人的共生实践</title>
+<style>
+  :root {
+    --paper: #faf9f6;
+    --ink: #1d1d1f;
+    --ink-soft: #48484a;
+    --ink-light: #8e8e93;
+    --accent: #6b7c53;
+    --accent-soft: #e8ede0;
+    --divider: #eceae4;
+    --tag-text: #9e9e9e;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #f0efe8;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.01em;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .page {
+    width: 100%;
+    max-width: 750px;
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  /* ── section ── */
+  .sec { padding: 56px 6.5vw; }
+  .sec-tight { padding: 40px 6.5vw; }
+  .sec-flush { padding: 56px 6.5vw 20px; }
+  .sec-flush-end { padding: 20px 6.5vw 56px; }
+
+  @media (min-width: 750px) {
+    .sec { padding: 80px 64px; }
+    .sec-tight { padding: 56px 64px; }
+    .sec-flush { padding: 80px 64px 32px; }
+    .sec-flush-end { padding: 32px 64px 80px; }
+  }
+
+  /* ── hero ── */
+  .hero {
+    padding: 16vw 6.5vw 13vw;
+    text-align: center;
+  }
+  @media (min-width: 750px) {
+    .hero { padding: 120px 64px 100px; }
+  }
+  .hero .eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", "SimSun", serif;
+    font-size: clamp(40px, 8vw, 56px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: 3px;
+  }
+  .hero .sub {
+    font-size: 16px;
+    color: var(--ink-light);
+    margin-top: 20px;
+    letter-spacing: 2px;
+  }
+
+  /* ── quote ── */
+  .quote-block {
+    padding: 48px 6.5vw;
+    text-align: center;
+  }
+  @media (min-width: 750px) {
+    .quote-block { padding: 64px 64px; }
+  }
+  .quote-block q {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-size: clamp(22px, 5vw, 28px);
+    line-height: 1.65;
+    color: var(--ink);
+    letter-spacing: 1px;
+    display: block;
+    quotes: none;
+  }
+
+  /* ── body ── */
+  .prose {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 2.1;
+  }
+  @media (min-width: 750px) {
+    .prose { font-size: 16px; }
+  }
+  .prose p + p { margin-top: 12px; }
+
+  /* ── meta ── */
+  .meta-grid {
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-cell { flex: 1; min-width: 140px; }
+  .meta-cell .lbl {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    margin-bottom: 8px;
+  }
+  .meta-cell .val {
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+  .meta-note {
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-top: 24px;
+    line-height: 1.8;
+  }
+
+  /* ── meeting ── */
+  .meeting-box {
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--white);
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 750px) {
+    .meeting-box { padding: 32px 36px; gap: 28px; }
+  }
+  .meeting-info { flex: 1; min-width: 200px; }
+  .meeting-info .mt-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+  }
+  .meeting-info .mt-link {
+    font-size: 13px;
+    color: var(--accent);
+    line-height: 1.7;
+    word-break: break-all;
+    margin-bottom: 8px;
+  }
+  .meeting-info .mt-id {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .meeting-info .mt-hint {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 4px;
+  }
+  .qr-wrap {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+  }
+  @media (min-width: 750px) {
+    .qr-wrap { width: 96px; height: 96px; }
+  }
+  .qr-wrap canvas, .qr-wrap img {
+    width: 88px !important;
+    height: 88px !important;
+  }
+  @media (min-width: 750px) {
+    .qr-wrap canvas, .qr-wrap img { width: 96px !important; height: 96px !important; }
+  }
+
+  /* ── layer ── */
+  .layer-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .layer-title {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-size: clamp(24px, 5vw, 30px);
+    color: var(--ink);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .layer-intro {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.9;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 750px) {
+    .layer-intro { font-size: 15px; margin-bottom: 48px; }
+  }
+
+  /* ── guest ── */
+  .guest {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .guest:last-child { border-bottom: none; padding-bottom: 0; }
+  .guest-top {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .guest-name {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .guest-pending {
+    font-size: 11px;
+    color: var(--tag-text);
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+  .guest-role {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .guest-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.95;
+  }
+  @media (min-width: 750px) {
+    .guest-desc { font-size: 15px; }
+    .guest-role { font-size: 14px; }
+  }
+  .guest-desc p + p { margin-top: 8px; }
+
+  /* ── process ── */
+  .proc-step {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 20px;
+    align-items: baseline;
+  }
+  .proc-step:last-child { margin-bottom: 0; }
+  .proc-num {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  @media (min-width: 750px) {
+    .proc-num { width: 32px; height: 32px; font-size: 14px; }
+  }
+  .proc-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  @media (min-width: 750px) {
+    .proc-text { font-size: 15px; }
+  }
+
+  /* ── closer ── */
+  .closer {
+    padding: 15vw 6.5vw 18vw;
+    text-align: center;
+  }
+  @media (min-width: 750px) {
+    .closer { padding: 100px 64px 120px; }
+  }
+  .closer q {
+    font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+    font-size: clamp(18px, 4vw, 22px);
+    line-height: 1.85;
+    color: var(--ink);
+    letter-spacing: 1px;
+    display: block;
+    quotes: none;
+  }
+  .signature {
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  /* ── tap to copy ── */
+  .tap-copy {
+    -webkit-tap-highlight-color: transparent;
+    user-select: all;
+    cursor: pointer;
+  }
+  .copied-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 2000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .copied-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="page" id="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">线上分享会</div>
+    <h1>归连<br>而复生</h1>
+    <div class="sub">自然、土地与人的共生实践</div>
+  </div>
+
+  <!-- OPENING -->
+  <div class="sec">
+    <div class="prose">
+      <p>森林最动人的生命力，不在于向阳舒展的枝叶，而藏在地表之下：根系与菌丝默默相拥、彼此缠绕，织就整片山林的生机网络。</p>
+      <p>草木不分强弱，菌群不分大小，相互输送养分、分担风雨风险、彼此托举存续。自然最质朴的规律，从来不是强者制胜，而是差异共存、互补共生、万物互联。没有任何生命可以独自安稳生长，整片山林，是一套温柔协作、相互成就的完整系统。</p>
+    </div>
+  </div>
+
+  <!-- CORE THESIS -->
+  <div class="quote-block">
+    <q>归连，而复生。<br>长久的存续，源于连接；<br>稳定的生长，源于共生。</q>
+  </div>
+
+  <div class="sec-tight">
+    <div class="prose">
+      <p>多数生态失衡与发展困境，本质都是关系的断裂。山林循环的错位、人与土地的疏离、古今生态智慧的割裂、实践者的彼此孤立。唯有重新搭建联结、修复关系、归位平衡，万物才能拥有长久生长的生机。</p>
+      <p>在近期围绕海洋文化、自然联结的交流与碰撞中，这场跨地域、跨领域的线上分享会顺势发起。活动汇聚七位散落全球的生态深耕者，涵盖海外生态耕种、云南林下菌根培育、乡村影响力实践、景观学术研究、城市可持续探索、自然影像创作、千年海洋人文复原等多元领域。</p>
+      <p>众人深耕赛道各不相同，实践场景各有差异，却怀揣着同一份温和的追问：如何以谦卑的姿态，与万物共处、与土地共生，与同频伙伴彼此照亮、互为补充。</p>
+    </div>
+  </div>
+
+  <!-- EVENT INFO -->
+  <div class="sec">
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <div class="lbl">时间</div>
+        <div class="val">2026.07.09<br>北京 13:00 — 15:00<br>洛杉矶 7.8 22:00 — 00:00</div>
+      </div>
+      <div class="meta-cell">
+        <div class="lbl">形式</div>
+        <div class="val">线上专属分享<br>免费公开旁听<br>全员自由开麦交流</div>
+      </div>
+    </div>
+    <div class="meta-note">无嘉宾与观众的硬性边界，尊重每一份真实表达与独特实践视角。</div>
+
+    <div class="meeting-box">
+      <div class="meeting-info">
+        <div class="mt-label">参与方式</div>
+        <div class="mt-link tap-copy" onclick="copyText('https://meeting.tencent.com/dm/4llzJRcNTOCr')">https://meeting.tencent.com/dm/4llzJRcNTOCr</div>
+        <div class="mt-id tap-copy" onclick="copyText('826-586-388')">#腾讯会议：826-586-388</div>
+        <div class="mt-hint">点按链接或会议号复制，打开腾讯会议加入</div>
+      </div>
+      <div class="qr-wrap" id="meetingQR"></div>
+    </div>
+  </div>
+
+  <!-- LAYER ONE -->
+  <div class="sec-flush">
+    <span class="layer-num">第一层联结</span>
+    <div class="layer-title">自然内部的连接</div>
+    <div class="layer-intro">土地、植被、菌类、水土，本是自洽包容的完整生态闭环。自然循环的细微断裂，便会带来生态的失衡。各地实践者以温和、贴合属地的方式呵护自然、修补裂隙，让山野与土地回归松弛自在的原生生长状态。</div>
+  </div>
+  <div class="sec-flush-end">
+    <div class="guest">
+      <div class="guest-top">
+        <span class="guest-name">JIAYI</span>
+        <span class="guest-pending">拟邀请待定</span>
+      </div>
+      <div class="guest-role">智利生态农场主理人</div>
+      <div class="guest-desc">长期驻守南美山野，坚持生态轮种与土壤养护，以长久朴素的田间实践，温柔维系土地生机，守护山野自然的良性循环。</div>
+    </div>
+    <div class="guest">
+      <div class="guest-top"><span class="guest-name">云南菌菇种植嘉宾</span></div>
+      <div class="guest-role">本土林下实践者</div>
+      <div class="guest-desc">深耕云南山林，敬畏并遵循菌根共生的自然时序，分享林下培育、菌群养护与山野循环经济的落地经验，传递山林原生的共生智慧。</div>
+    </div>
+    <div class="guest">
+      <div class="guest-top"><span class="guest-name">Merry May Ma</span></div>
+      <div class="guest-role">UCLA导演系 · 自然影像创作者</div>
+      <div class="guest-desc">深耕山野自然观察，专注林下菌群与草木共生的微观生态。擅长以细腻镜头捕捉自然原生肌理，依托专业影视创作能力深耕自然题材影像。本次将带来获奖短片《GARDENERS》独家预告，同步分享自用完整影视后期工作流，拆解素材取舍、画面调性、剪辑逻辑、调色成片的全套实操干货，让隐秘温柔的山野共生之美，通过专业影像被更多人看见。</div>
+    </div>
+  </div>
+
+  <!-- LAYER TWO -->
+  <div class="sec-flush">
+    <span class="layer-num">第二层联结</span>
+    <div class="layer-title">人与土地的连接</div>
+    <div class="layer-intro">人与土地的相处，从来没有标准答案。乡村、城市、旷野拥有全然不同的发展语境，每一份扎根土地的真诚探索、每一次适配场景的实践尝试，都值得被倾听、被看见。</div>
+  </div>
+  <div class="sec-flush-end">
+    <div class="guest">
+      <div class="guest-top"><span class="guest-name">小土豆</span></div>
+      <div class="guest-role">乡村影响力投资实践</div>
+      <div class="guest-desc">扎根国内乡村一线，以务实力量赋能乡土产业，真诚分享乡村生态项目的落地成果与复盘思考，探索资本、人居与乡村土地温和共生、双向赋能的可行路径。</div>
+    </div>
+    <div class="guest">
+      <div class="guest-top">
+        <span class="guest-name">粟粟</span>
+        <span class="guest-pending">拟邀请待定</span>
+      </div>
+      <div class="guest-role">哈佛大学景观学博士</div>
+      <div class="guest-desc">跳出固化造景思维，聚焦城市与荒野的边界平衡，在人居发展迭代与自然生态保护之间，探寻双向兼容、彼此包容的共生解法。</div>
+    </div>
+    <div class="guest">
+      <div class="guest-top">
+        <span class="guest-name">瑾曦</span>
+        <span class="guest-pending">拟邀请待定</span>
+      </div>
+      <div class="guest-role">香港生态可持续发展研究员</div>
+      <div class="guest-desc">立足高密度都市场景，在城市楼宇缝隙中探索生态存续的可能性，研究现代都市与自然兼容共生的多元路径，为城市生态可持续发展提供温和参考。</div>
+    </div>
+  </div>
+
+  <!-- LAYER THREE -->
+  <div class="sec-flush">
+    <span class="layer-num">第三层联结</span>
+    <div class="layer-title">古今与人的连接</div>
+    <div class="layer-intro">自然依靠循环自愈生长，而人类对自然的敬畏、守护与共生智慧，依靠代代传承的经验、认知与善意延续。影像记录、数字复原、人文传承，都是联结古今、温暖彼此、延续生态共识的温柔载体。</div>
+  </div>
+  <div class="sec-flush-end">
+    <div class="guest">
+      <div class="guest-top"><span class="guest-name">郁斌</span></div>
+      <div class="guest-role">妈祖主题动画导演 · 数字艺术家</div>
+      <div class="guest-desc">
+        <p>为本场分享补足独特的古今共生视角。妈祖文化不止是传统信仰，更是古人延续千年的海洋生存智慧，沉淀着一套敬畏山海、包容互助、人海共生的东方生态体系。</p>
+        <p>古时东海辽阔未知、风浪无常，先民们怀揣谦卑之心敬畏自然、彼此同舟共济，在磅礴莫测的山海力量面前，学会顺应、共处、守护。</p>
+        <p>郁斌以3D、AI数字技术，温柔复原千年东海的海风、船帆与滨海风貌。复刻的不仅是消逝的山海景观，更是东方先民顺应自然、邻里帮扶、人海共存的古老生态智慧，以古照今，为当代各类生态实践提供温柔的参照与补充。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="sec">
+    <div class="layer-title" style="margin-bottom:6px;">分享流程</div>
+    <div style="font-size:13px;color:var(--ink-light);margin-bottom:32px;">轻松松弛、无压力</div>
+    <div class="proc-step">
+      <span class="proc-num">1</span>
+      <span class="proc-text">主理人开场：以根系共生为引，串联全场多元生态实践，铺垫「归连复生」的核心主旨。</span>
+    </div>
+    <div class="proc-step">
+      <span class="proc-num">2</span>
+      <span class="proc-text">嘉宾分享：每人 15–20 分钟，无需制式PPT、无需刻意备稿，真诚分享个人实践、一线见闻与真实思考即可。</span>
+    </div>
+    <div class="proc-step">
+      <span class="proc-num">3</span>
+      <span class="proc-text">全员开放交流：旁听伙伴可自由开麦互动，嘉宾之间平等探讨、相互启发、彼此赋能，无圈层与身份壁垒。</span>
+    </div>
+  </div>
+
+  <!-- PURPOSE -->
+  <div class="quote-block">
+    <q>生态可持续从来没有唯一解法。<br>耕种护土、学术研究、乡村赋能、<br>影像记录、人文传承——<br>每一份真诚的坚守，<br>都拥有独一无二的价值。</q>
+  </div>
+
+  <div class="sec-tight">
+    <div class="prose">
+      <p>跨越地域与圈层的相聚，只为让散落各地的微小善意与实践相互联结、彼此成全，让人与自然的温柔共处、实践者与同路人的双向奔赴，被更多人共鸣、传递与延续。</p>
+    </div>
+  </div>
+
+  <!-- CLOSER -->
+  <div class="closer">
+    <q>愿每一份守护自然的热爱都不孤单，<br>每一种共生实践都自有意义。<br>回归连接，万物复生，<br>让所有温柔的坚守，<br>彼此联结、长久存续、生生不息。</q>
+    <div class="signature">诚挚期待各位嘉宾的参与<br>—— 布布</div>
+  </div>
+
+</div>
+
+<div class="copied-toast" id="toast">已复制</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+new QRCode(document.getElementById('meetingQR'), {
+  text: 'https://meeting.tencent.com/dm/4llzJRcNTOCr',
+  width: 96, height: 96,
+  colorDark: '#1d1d1f', colorLight: '#ffffff',
+});
+
+function copyText(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(showToast);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast();
+  }
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+</script>
+
+</body>
+</html>
